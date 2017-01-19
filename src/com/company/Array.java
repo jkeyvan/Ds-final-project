@@ -1,5 +1,6 @@
 package com.company;
 
+
 public class Array {
 
 // /////////////////////////////////////////////////////////////////////////// ADT of List ///////////////////////////////////////////////////////////////
@@ -459,17 +460,20 @@ public class Array {
             }
         }
 
-        class state {
+        class State {
             private double  x;
             private double y;
-            private AList<state> path;
+            private AList<State> path;
             private AList<element> injuries;
 
-            state(double iks, double ipsilon, AList p, AList i) {
+            State(double iks, double ipsilon, AList p, AList i) {
                 x = iks;
                 y = ipsilon;
                 path = p;
                 injuries = i;
+            }
+            AList<State> getPath() {
+                return path;
             }
         }
 
@@ -479,22 +483,22 @@ public class Array {
 
         /** Doubly linked list node */
 
-        class DLink<state> {
+        class DLink<State> {
 
-            private state element; // Value for this node
-            private DLink<state> next; // Pointer to next node in list
-            private DLink<state> prev; // Pointer to previous node
+            private State element; // Value for this node
+            private DLink<State> next; // Pointer to next node in list
+            private DLink<State> prev; // Pointer to previous node
 
             /**
              * Constructors
              */
-            DLink(state it, DLink<state> p, DLink<state> n) {
+            DLink(State it, DLink<State> p, DLink<State> n) {
                 element = it;
                 prev = p;
                 next = n;
             }
 
-            DLink(DLink<state> p,DLink<state> n) {
+            DLink(DLink<State> p,DLink<State> n) {
                 prev = p;
                 next = n;
             }
@@ -502,27 +506,27 @@ public class Array {
             /**
              * Get and set methods for the data members
              */
-            DLink<state> next() {
+            DLink<State> next() {
                 return next;
             }
 
-            DLink<state> setNext(DLink<state> nextval) {
+            DLink<State> setNext(DLink<State> nextval) {
                 return next = nextval;
             }
 
-            DLink<state> prev() {
+            DLink<State> prev() {
                 return prev;
             }
 
-            DLink<state> setPrev(DLink<state> prevval) {
+            DLink<State> setPrev(DLink<State> prevval) {
                 return prev = prevval;
             }
 
-            state element() {
+            State element() {
                 return element;
             }
 
-            state setElement(state it) {
+            State setElement(State it) {
                 return element = it;
             }
         }
@@ -581,6 +585,9 @@ public class Array {
                 if (curr != head) // Can’t back up from list head
                     curr = curr.prev();
             }
+            public int getsize(){
+                return cnt;
+            }
 
 
         }
@@ -614,7 +621,7 @@ public class Array {
         AList injuriesofcity6 =new AList<PointerInj>();
 
 
-        // state city1=new state(3.5,95.5,row1,injuriesofcity);
+        // State city1=new State(3.5,95.5,row1,injuriesofcity);
 
         getnode<element> inj1= new getnode<element>(injuries,0);
         getnode<element> inj2= new getnode<element>(injuries,1);
@@ -625,29 +632,29 @@ public class Array {
 
         // ///////////////////////////////////////////////////////////// defining Related States ////////////////////////////////////////////////////////
 
-        AList<state> Tocity1=new AList<state>();
+        AList<State> Tocity1=new AList<State>();
 
-        AList<state> Tocity2=new AList<state>();
+        AList<State> Tocity2=new AList<State>();
 
-        AList<state> Tocity3=new AList<state>();
+        AList<State> Tocity3=new AList<State>();
 
-        AList<state> Tocity4=new AList<state>();
+        AList<State> Tocity4=new AList<State>();
 
-        AList<state> Tocity5=new AList<state>();
+        AList<State> Tocity5=new AList<State>();
 
-        AList<state> Tocity6=new AList<state>();
+        AList<State> Tocity6=new AList<State>();
 
 
 // ///////////////////////////////////////////////////////////// End of defining Related States /////////////////////////////////////////////////////
 
 // ///////////////////////////////////////////////////////////// Defining the states ////////////////////////////////////////////////////////////////
 
-        state city1= new state(3.232,3.545,null,injuriesofcity1);
-        state city2= new state(7.5,4.5,null,injuriesofcity2);
-        state city3= new state(9.5,4.5,null,injuriesofcity3);
-        state city4= new state(10.5,4.5,null,injuriesofcity4);
-        state city5= new state(11.5,4.5,null,injuriesofcity5);
-        state city6= new state(12.5,4.5,null,injuriesofcity6);
+        State city1= new State(3.232,3.545,null,injuriesofcity1);
+        State city2= new State(7.5,4.5,null,injuriesofcity2);
+        State city3= new State(9.5,4.5,null,injuriesofcity3);
+        State city4= new State(10.5,4.5,null,injuriesofcity4);
+        State city5= new State(11.5,4.5,null,injuriesofcity5);
+        State city6= new State(12.5,4.5,null,injuriesofcity6);
 
 // ///////////////////////////////////////////////////////////// End of  Defining the states /////////////////////////////////////////////////////
 
@@ -697,7 +704,7 @@ public class Array {
 
 
 
-        DLList DLinkListofCities=new DLList<state>();
+        DLList DLinkListofCities=public new DLList<State>();
         DLinkListofCities.insert(city1);
         DLinkListofCities.insert(city2);
         DLinkListofCities.insert(city3);
@@ -778,5 +785,49 @@ public class Array {
 
        // System.out.println(khodemun.getValue().getValue());
 
+
+        }
+    class isBipartite {
+        final int V = DLinkListofCities.getsize();
+        boolean isBipartite(DLList<State> DLinkListofCities) {
+            int colorArr[] = new int[V];
+            for(int i=0; i<V; i++) {
+                colorArr[i] = -1;
+            }
+            colorArr[0]=1;
+            for (int i=0;i<V;DLinkListofCities.next()){
+                AList<state> adjacent = DLinkListofCities.element().getPath();
+                for(int j=0; j<adjacent.length() ; j++) {
+                    if(colorArr[j] == -1){
+                        colorArr[j] = 1-colorArr[i];
+                    }
+                    else if (colorArr[i] == colorArr[j]) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
+
+
+    static void Prim(int[][] G, int s, int[] D, int[] V) {
+        int[] visited = new int[G.length];
+        for(int i=0;i<G.length;i++) visited[i]=0;
+        for (int i=0; i<G.length; i++) // Initialize
+            D[i] = Integer.MAX_VALUE;
+        D[s] = 0;
+        for (int i=0; i<G.length; i++) { // Process the vertices
+            int v = minVertex(G, D);
+            visited[v]=1;
+            if (v != s) AddEdgetoMST(V[v], v);
+            if (D[v] == Integer.MAX_VALUE) return; // Unreachable
+            for (int w ; w < G.length; w = G.next(v, w))
+                if (D[w] > G[v][w]) {
+                    D[w] = G[v][w];
+                    V[w] = v;
+                }
+        }
+    }
+
 }

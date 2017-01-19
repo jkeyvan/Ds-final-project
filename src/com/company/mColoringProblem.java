@@ -8,7 +8,7 @@ package com.company;
 public class mColoringProblem {
     final int V = 4;
     int color[];
-    Main.Graphm ali=new Main.Graphm()
+
 
     /* A utility function to check if the current
        color assignment is safe for vertex v */
