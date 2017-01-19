@@ -1,5 +1,6 @@
 package com.company;
 
+
 /**
  * Created by kayvan on 1/11/2017.
  */
@@ -8,6 +9,7 @@ public class Tree {
     public static void main(String[] args){
 
         keyvan(3);
+
     }
 
     public interface BinNode<E> {
