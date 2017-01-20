@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * Created by kayvan on 1/20/2017.
  */
 public class run {
-
     class Bipartite {
 
         private Array.AList<Array.AList<Integer>> G;   // my 2d array
@@ -39,10 +38,10 @@ public class run {
                     A.moveToPos(v);
                     int uv = (int) A.getValue();
 
-                    if ((uv) == 1 && colorArr[v] == -1) {
+                    if ((uv)!=0 && colorArr[v] == -1) {
                         colorArr[v] = 1 - colorArr[u];
                         q.enqueue(v);
-                    } else if (uv == 1 && colorArr[v] == colorArr[u]) {
+                    } else if (uv !=0  && colorArr[v] == colorArr[u]) {
                         return false;
                     }
                 }
@@ -52,42 +51,86 @@ public class run {
 
     }
 
-    /** @return v’s next neighbor after w */
 
-public int next(Array.AList<Array.AList<Integer>> Mark,int v, int w) {
+
+
+    static int minVertex(Array.AList<Array.AList<Integer>> G, int[] D,int[] visited) {
+        int v = 0; // Initialize v to any unvisited vertex;
+        for (int i=0; i<G.length(); i++)
+            if (visited[i] == 0) { v = i; break; }
+        for (int i=0; i<G.length(); i++) // Now find smallest value
+            if (visited[i] == 0 && (D[i] < D[v]))
+                v = i;
+        return v;
+    }
+
+    public static int next(Array.AList<Array.AList<Integer>> Mark,int v, int w) {
+            int i;
+            for (i=w+1; i<Mark.length(); i++)
+
+                Mark.moveToPos(v);
+                Array.AList A;
+                A = Mark.getValue();
+                A.moveToPos(i);
+                int vi = (int) A.getValue();
+                if (vi != 0)
+                    return i;
+            return Mark.length(); // No next edge;
+        }
+
+    public  static int first(Array.AList<Array.AList<Integer>> Mark,int v) {
         int i;
-        for (i=w+1; i<Mark.length(); i++)
+        for (i=0; i<Mark.length(); i++)
 
             Mark.moveToPos(v);
             Array.AList A;
             A = Mark.getValue();
             A.moveToPos(i);
-            int vi = (int) A.getValue();
-            if (vi != 0)
-                return i;
-        return Mark.length(); // No next edge;
+            int vi= (int) A.getValue();
+            if (vi != 0) return i;
+        return Mark.length();
     }
 
-    void Prim(Array.AList<Array.AList<Integer>> G, int s, int[] D, int[] V) {
-            int[] visited = new int[G.length()];
-            for (int i = 0; i < G.length; i++) visited[i] = 0;
-            for (int i = 0; i < G.length; i++) // Initialize
-                D[i] = Integer.MAX_VALUE;
-            D[s] = 0;
-            for (int i = 0; i < G.length; i++) { // Process the vertices
-                int v = minVertex(G, D);
-                visited[v] = 1;
-                if (v != s) AddEdgetoMST(V[v], v);
-                if (D[v] == Integer.MAX_VALUE) return; // Unreachable
-                for (int w; w < G.length(); w = next(G,v, w))
-                    if (D[w] > G[v][w]) {
-                        D[w] = G[v][w];
-                        V[w] = v;
-                    }
+    static void Prim(Array.AList<Array.AList<Integer>> G, int[] visited) {
+
+//        int[] visited=new int[G.length()];
+//        for( int j=0; j<G.length(); j++) visited[ j]=0;
+        int[] D=new int[G.length()];
+        int[] V=new int[G.length()];
+
+        for(int k=0;k<G.length();k++) V[k]=0;
+
+        for (int i=0; i<G.length(); i++) // Initialize
+            D[i] = Integer.MAX_VALUE;
+        D[0] = 0;
+
+
+        for (int i=0; i<G.length(); i++) { // Process the vertices
+            int v = minVertex(G, D,visited);
+            visited[v]=1;
+            //if (v != 0) AddEdgetoMST(V[v], v);
+            if (v != 0) {
+                System.out.println(V[v]);
+                System.out.println(v);
+                System.out.println(11111111);
             }
+            if (D[v] == Integer.MAX_VALUE) return; // Unreachable
+            int w;
+            for (w = first(G,v); w < G.length(); w = next(G,v, w)){
+
+                G.moveToPos(v);
+                Array.AList A;
+                A = G.getValue();
+                A.moveToPos(w);
+                int vw= (int) A.getValue();
+
+                if (D[w] > vw) {
+                    D[w] = vw;
+                    V[w] = v;
+                }
         }
-
-
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -242,6 +285,12 @@ public int next(Array.AList<Array.AList<Integer>> Mark,int v, int w) {
         khodemun.insert(row5);
         khodemun.insert(row6);
 
+
+        int[] visited=new int[khodemun.length()];
+        for( int j=0; j<khodemun.length(); j++) visited[ j]=0;
+
+
+        Prim(khodemun,visited);
     }
 }
 
