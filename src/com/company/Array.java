@@ -3,831 +3,417 @@ package com.company;
 
 public class Array {
 
-// /////////////////////////////////////////////////////////////////////////// ADT of List ///////////////////////////////////////////////////////////////
-
-    /** List ADT */
     public interface List<E> {
-        /** Remove all contents from the list, so it is once again
-         empty. Client is responsible for reclaiming storage
-         used by the list elements. */
         public void clear();
-        /** Insert an element at the current location. The client
-         must ensure that the list’s capacity is not exceeded.
-         @param item The element to be inserted. */
         public void insert(E item);
-        /** Append an element at the end of the list. The client
-         must ensure that the list’s capacity is not exceeded.
-         @param item The element to be appended. */
         public void append(E item);
-        /** Remove and return the current element.
-         @return The element that was removed. */
         public E remove();
-        /** Set the current position to the start of the list */
         public void moveToStart();
-        /** Set the current position to the end of the list */
         public void moveToEnd();
-        /** Move the current position one step left. No change
-         if already at beginning. */
         public void prev();
-        /** Move the current position one step right. No change
-         if already at end. */
         public void next();
-        /** @return The number of elements in the list. */
         public int length();
-        /** @return The position of the current element. */
         public int currPos();
-        /** Set current position.
-         @param pos The position to make current. */
         public void moveToPos(int pos);
-        /** @return The current element. */
         public E getValue();
+    } // List ADT
+
+
+    static class AList<E> implements List<E> {
+        private static final int defaultSize = 10;
+        private int maxSize;
+        private int listSize;
+        private int curr;
+        private E[] listArray;
+
+        AList() {
+            this(defaultSize);
+        }
+        AList(int size) {
+            maxSize = size;
+            listSize = curr = 0;
+            listArray = (E[]) new Object[size]; // Create listArray
+        }
+       @Override
+        public void clear()
+        {
+            listSize = curr = 0;
+        }
+
+        public void insert(E it) {
+            assert listSize < maxSize : "List capacity exceeded";
+            for (int i = listSize; i > curr; i--) // Shift elements up
+                listArray[i] = listArray[i - 1]; // to make room
+            listArray[curr] = it;
+            listSize++; // Increment list size
+        }
+
+        public void append(E it) {
+            assert listSize < maxSize : "List capacity exceeded";
+            listArray[listSize++] = it;
+        }
+
+        public E remove() {
+            if ((curr < 0) || (curr >= listSize)) // No current element
+                return null;
+            E it = listArray[curr]; // Copy the element
+            for (int i = curr; i < listSize - 1; i++) // Shift them down
+                listArray[i] = listArray[i + 1];
+            listSize--; // Decrement size
+            return it;
+        }
+
+        public void moveToStart() {
+            curr = 0;
+        }
+
+        public void moveToEnd() {
+            curr = listSize;
+        }
+
+        public void prev() {
+            if (curr != 0) curr--;
+        }
+
+        public void next() {
+            if (curr < listSize) curr++;
+        }
+
+        public int length() {
+            return listSize;
+        }
+
+        public int currPos() {
+            return curr;
+        }
+
+        public void moveToPos(int pos) {
+            assert (pos >= 0) && (pos <= listSize) : "Pos out of range";
+            curr = pos;
+        }
+
+        public E getValue() {
+            assert (curr >= 0) && (curr < listSize) :
+                    "No current element";
+            return listArray[curr];
+
+
+        }
+
+        public E find(E item){
+            int cnt2=0;
+            while (cnt2 < this.listSize);
+            cnt2++;
+            this.moveToPos(cnt2);
+            if (getValue()==item);
+            return item;
+
+
+        }
+
+        public void update(E item){
+            // I didnt have time
+        }
+
     }
 
-// /////////////////////////////////////////////////////////////////////////// End of  ADT of List ////////////////////////////////////////////////////////
+
+    class Link<E> {
+        private E element;
+        private Link<E> next;
 
 
-    public static void main(String[] args) {
+        Link(E it, Link<E> nextval) {
+            element = it;
+            next = nextval;
+        }
 
-        // /////////////////////////////////////////////////////// array-based implementation///////////////////////////////////////////////////////////////
+        Link(Link<E> nextval) {
+            next = nextval;
+        }
 
-// Array based List
+        Link<E> next() {
+            return next;
+        }
 
-        class AList<E> implements List<E> {
-            private static final int defaultSize = 10; // Default size
-            private int maxSize; // Maximum size of list
-            private int listSize; // Current # of list items
-            private int curr; // Position of current element
-            private E[] listArray; // Array holding list elements
-/** Constructors */
-            /**
-             * Create a list with the default capacity.
-             */
-            AList() {
-                this(defaultSize);
-            }
+        Link<E> setNext(Link<E> nextval)
+        {
+            return next = nextval;
+        }
+        E element() {
+            return element;
+        }
+        E setElement(E it) {
+            return element = it;
+        }
+    }
 
-            /**
-             * Create a new list object.
-             *
-             * @param size Max # of elements list can contain.
-             */
-            @SuppressWarnings("unchecked")
-            // Generic array allocation
-            AList(int size) {
-                maxSize = size;
-                listSize = curr = 0;
-                listArray = (E[]) new Object[size]; // Create listArray
-            }
+    class LList<E> {
+        private Link<E> head;
+        private Link<E> tail;
+        protected Link<E> curr;
+        private int cnt;
 
 
-            @Override
-            public void clear() // Reinitialize the list
-            {
-                listSize = curr = 0;
-            } // Simply reinitialize values
+        LList(int size) {
+            this();
+        } // Constructor -- Ignore size
 
-
-            /**
-             * Insert "it" at current position
-             */
-
-            public void insert(E it) {
-                assert listSize < maxSize : "List capacity exceeded";
-                for (int i = listSize; i > curr; i--) // Shift elements up
-                    listArray[i] = listArray[i - 1]; // to make room
-                listArray[curr] = it;
-                listSize++; // Increment list size
-            }
-
-            /**
-             * Append "it" to list
-             */
-
-            public void append(E it) {
-                assert listSize < maxSize : "List capacity exceeded";
-                listArray[listSize++] = it;
-            }
-
-            /**
-             * Remove and return the current element
-             */
-            public E remove() {
-                if ((curr < 0) || (curr >= listSize)) // No current element
-                    return null;
-                E it = listArray[curr]; // Copy the element
-                for (int i = curr; i < listSize - 1; i++) // Shift them down
-                    listArray[i] = listArray[i + 1];
-                listSize--; // Decrement size
-                return it;
-            }
-
-            public void moveToStart() {
-                curr = 0;
-            } // Set to front
-
-            public void moveToEnd() {
-                curr = listSize;
-            } // Set at end
-
-            public void prev() {
-                if (curr != 0) curr--;
-            } // Back up
-
-            public void next() {
-                if (curr < listSize) curr++;
-            }
-
-            /**
-             * @return List size
-             */
-            public int length() {
-                return listSize;
-            }
-
-            /**
-             * @return Current position
-             */
-            public int currPos() {
-                return curr;
-            }
-
-            /**
-             * Set current list position to "pos"
-             */
-            public void moveToPos(int pos) {
-                assert (pos >= 0) && (pos <= listSize) : "Pos out of range";
-                curr = pos;
-            }
-
-            /**
-             * @return Current element
-             */
-            public E getValue() {
-                assert (curr >= 0) && (curr < listSize) :
-                        "No current element";
-                return listArray[curr];
-
-
-            }
-            public E find(E item){
-                int cnt2=0;
-                while (cnt2 < this.listSize);
-                cnt2++;
-                this.moveToPos(cnt2);
-                if (getValue()==item);
-                return item;
-
-
-            }
-
-            public void update(E item){
-                // I didnt have time
-            }
-
+        LList() {
+            curr = tail = head = new Link<E>(null); // Create header
+            cnt = 0;
         }
 
 
-
-////////////////////////////////////////////////////////   Triple Tuple implementation /////////////////////////
-        class Triplet<n, a, i> {
-            public final String name;
-            public final Integer age;
-            public final Integer injury;
-
-            public Triplet(String first, Integer second, Integer third) {
-                this.name = first;
-                this.age = second;
-                this.injury = third;
-            }
-            public String toString() {
-                return name + ", " + age.toString() + ", " + injury.toString();
-            }
+        public void clear() {
+            head.setNext(null); // Drop access to links
+            curr = tail = head = new Link<E>(null); // Create header
+            cnt = 0;
         }
-/////////////////////////////////////////////////  End of  Triple Tuple implementation /////////////////////////////////
-
-//        Triplet testbench
-        Triplet temp = new Triplet<>("mohsen", 23, 5);
-        //System.out.println(temp);
-//         end testbench
-
-
-////////////////////// /////////////////////////////////////////////////// Injured People /////////////////////////////////////
-
-        class element {
-            private String name;
-            private Integer age;
-            private Integer injury;
-
-            element(String n, Integer a, Integer i) {
-                name = n;
-                age = a;
-                injury = i;
-            }
-
-            public Triplet getInfo() {
-                Triplet<String, Integer, Integer> temp = new Triplet<String, Integer, Integer>(name, age, injury);
-                return temp;
-            }
+        public void insert(E it) {
+            curr.setNext(new Link<E>(it, curr.next()));
+            if (tail == curr) tail = curr.next(); // New tail
+            cnt++;
         }
-
-
-        element injured1 = new element("jack", 18, 3);
-        element injured2 = new element("james", 22, 5);
-        element injured3 = new element("luck", 8, 7);
-        element injured4 = new element("anna", 28, 1);
-        element injured5 = new element("nika", 18, 7);
-        element injured6 = new element("Lewis", 78, 3);
-
-///////// //////////////////////////////////////////  End of Injured People ////////////////////////////////////////////////////////
-////////// ///////////////////////////////////// Start  Single Link list   //////////////////////////////////////////////////////////
-
-// implementing the single link list " node "
-
-        class Link<E> {
-            private E element; // Value for this node
-            private Link<E> next; // Pointer to next node in list
-
-            // Constructors
-            Link(E it, Link<E> nextval) {
-                element = it;
-                next = nextval;
-            }
-
-            Link(Link<E> nextval) {
-                next = nextval;
-            }
-
-            Link<E> next() {
-                return next;
-            } // Return next field
-
-            Link<E> setNext(Link<E> nextval) // Set next field
-            {
-                return next = nextval;
-            } // Return element field
-
-            E element() {
-                return element;
-            } // Set element field
-
-            E setElement(E it) {
-                return element = it;
-            }
+        public void append(E it) {
+            tail = tail.setNext(new Link<E>(it, null));
+            cnt++;
         }
-
-        // End of node
-
-        class LList<E> {
-            private Link<E> head; // Pointer to list header
-            private Link<E> tail; // Pointer to last element
-            protected Link<E> curr; // Access to current element
-            private int cnt; // Size of list
-
-            /**
-             * Constructors
-             */
-            LList(int size) {
-                this();
-            } // Constructor -- Ignore size
-
-            LList() {
-                curr = tail = head = new Link<E>(null); // Create header
-                cnt = 0;
-            }
-
-            /**
-             * Remove all elements
-             */
-            public void clear() {
-                head.setNext(null); // Drop access to links
-                curr = tail = head = new Link<E>(null); // Create header
-                cnt = 0;
-            }
-
-            /**
-             * Insert "it" at current position
-             */
-            public void insert(E it) {
-                curr.setNext(new Link<E>(it, curr.next()));
-                if (tail == curr) tail = curr.next(); // New tail
-                cnt++;
-            }
-
-            /**
-             * Append "it" to list
-             */
-            public void append(E it) {
-                tail = tail.setNext(new Link<E>(it, null));
-                cnt++;
-            }
-
-            /**
-             * Remove and return current element
-             */
-            public E remove() {
-                if (curr.next() == null) return null; // Nothing to remove
-                E it = curr.next().element(); // Remember value
-                if (tail == curr.next()) tail = curr; // Removed last
-                curr.setNext(curr.next().next()); // Remove from list
-                cnt--; // Decrement count
-                return it; // Return value
-            }
-
-            /**
-             * Set curr at list start
-             */
-            public void moveToStart() {
-                curr = head;
-            }
-
-            /**
-             * Set curr at list end
-             */
-            public void moveToEnd() {
-                curr = tail;
-            }
-
-            /**
-             * Move curr one step left; no change if now at front
-             */
-            public Link<E> prev() {
-                if (curr == head) return null; // No previous element
-                Link<E> temp = head;
+        public E remove() {
+            if (curr.next() == null) return null; // Nothing to remove
+            E it = curr.next().element(); // Remember value
+            if (tail == curr.next()) tail = curr; // Removed last
+            curr.setNext(curr.next().next()); // Remove from list
+            cnt--; // Decrement count
+            return it; // Return value
+        }
+        public void moveToStart() {
+            curr = head;
+        }
+        public void moveToEnd() {
+            curr = tail;
+        }
+        public Link<E> prev() {
+            if (curr == head) return null; // No previous element
+            Link<E> temp = head;
 // March down list until we find the previous element
-                while (temp.next() != curr) temp = temp.next();
-                curr = temp;
-                return curr;
-            }
+            while (temp.next() != curr) temp = temp.next();
+            curr = temp;
+            return curr;
+        }
+        public Link<E> next() {
+            if (curr != tail) curr = curr.next();
+            return curr;
+        }
+        public int length() {
+            return cnt;
+        }
+        public int currPos() {
+            Link<E> temp = head;
+            int i;
+            for (i = 0; curr != temp; i++)
+                temp = temp.next();
+            return i;
+        }
+        public Link<E> curr(){
+            return curr;
+        }
+        public void moveToPos(int pos) {
+            assert (pos >= 0) && (pos <= cnt) : "Position out of range";
+            curr = head;
+            for (int i = 0; i < pos; i++) curr = curr.next();
+        }
+        public E getValue() {
+            if (curr.next() == null) return null;
+            return curr.next().element();
+        }
+        public E getItem(int num1){
 
-            /**
-             * Move curr one step right; no change if now at end
-             */
-            public Link<E> next() {
-                if (curr != tail) curr = curr.next();
-                return curr;
-            }
-
-            /**
-             * @return List length
-             */
-            public int length() {
-                return cnt;
-            }
-
-            /**
-             * @return The position of the current element
-             */
-            public int currPos() {
-                Link<E> temp = head;
-                int i;
-                for (i = 0; curr != temp; i++)
-                    temp = temp.next();
-                return i;
-            }
-
-
-            public Link<E> curr(){
-                return curr;
-            }
-
-            /**
-             * Move down list to "pos" position
-             */
-            public void moveToPos(int pos) {
-                assert (pos >= 0) && (pos <= cnt) : "Position out of range";
-                curr = head;
-                for (int i = 0; i < pos; i++) curr = curr.next();
-            }
-
-            /**
-             * @return Current element value
-             */
-            public E getValue() {
-                if (curr.next() == null) return null;
-                return curr.next().element();
-            }
-            public E getItem(int num1){
-
-                if (curr.next()==null) return null;
-                this.moveToPos(num1);
-                return this.getValue();
-            }
-
-
-            public int find(element A){
-                int cnt1=0;
-                while (cnt1<=cnt);
-                this.moveToPos(cnt1);
-                if (curr.element == A);
-                return cnt1;
-            }
-
-            public void update(){
-                //  i dont have time
-            }
-
-
+            if (curr.next()==null) return null;
+            this.moveToPos(num1);
+            return this.getValue();
+        }
+        public int find(element A){
+            int cnt1=0;
+            while (cnt1<=cnt);
+            this.moveToPos(cnt1);
+            if (curr.element == A);
+            return cnt1;
+        }
+        public void update(){
+            //  i dont have time
         }
 
-////////// ///////////////////////////////////// End of  Single Link list   /////////////////////////////////////////////////////////////////////////
-////////// ///////////////////////////////////// Start  of class for returning the node of a link list   ////////////////////////////////////////////
 
-        class getnode<E>{
-            private LList<E> llist;
-            private int count;
-            private Link<E> curr ;
-            private Link<E> next;
-            private Link<E> prev;
+    }
 
 
-            getnode(LList<E> llist,int count){
-                llist=llist;
-                count=count;
+    class DLink<State> {
 
-                llist.moveToPos(count);
-                this.curr=llist.curr();
-                this.next=llist.next();
-                this.prev=llist.prev();
-            }
-        }
-////////// ////////////////////////////////////////////////////////// End of class  getnode  //////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////// Defining States  ///////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////// Call_by_reference class for injuries ///////////////////////////////////////////////////
-        class PointerInj {
-            public element person;
-            PointerInj(element i){
-                person = i;
-            }
+        private State element;
+        private DLink<State> next;
+        private DLink<State> prev;
+
+
+        DLink(State it, DLink<State> p, DLink<State> n) {
+            element = it;
+            prev = p;
+            next = n;
         }
 
-        class State {
-            private double  x;
-            private double y;
-            private AList<State> path;
-            private AList<element> injuries;
-
-            State(double iks, double ipsilon, AList p, AList i) {
-                x = iks;
-                y = ipsilon;
-                path = p;
-                injuries = i;
-            }
-            AList<State> getPath() {
-                return path;
-            }
+        DLink(DLink<State> p,DLink<State> n) {
+            prev = p;
+            next = n;
         }
 
-/////////////////////////////////////////////////////////////////  End of Defining States  ///////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////// End of Call_by_reference class for injuries ///////////////////////////////////////////////////
-        ///////////////////////////// ///////////////////////////////// Double link List ///////////////////////////////////////////////////////////////////////////
-
-        /** Doubly linked list node */
-
-        class DLink<State> {
-
-            private State element; // Value for this node
-            private DLink<State> next; // Pointer to next node in list
-            private DLink<State> prev; // Pointer to previous node
-
-            /**
-             * Constructors
-             */
-            DLink(State it, DLink<State> p, DLink<State> n) {
-                element = it;
-                prev = p;
-                next = n;
-            }
-
-            DLink(DLink<State> p,DLink<State> n) {
-                prev = p;
-                next = n;
-            }
-
-            /**
-             * Get and set methods for the data members
-             */
-            DLink<State> next() {
-                return next;
-            }
-
-            DLink<State> setNext(DLink<State> nextval) {
-                return next = nextval;
-            }
-
-            DLink<State> prev() {
-                return prev;
-            }
-
-            DLink<State> setPrev(DLink<State> prevval) {
-                return prev = prevval;
-            }
-
-            State element() {
-                return element;
-            }
-
-            State setElement(State it) {
-                return element = it;
-            }
-        }
-        /** Insert "it" at current position */
-
-
-        class DLList<E>  {
-            private DLink<E> head; // Pointer to list header
-            private DLink<E> tail; // Pointer to last element
-            protected DLink<E> curr; // Access to current element
-            private int cnt; // Size of list
-
-            /**
-             * Constructors
-             */
-
-            DLList(int size) {
-                this();
-            } // Constructor -- Ignore size
-
-            DLList() {
-                curr = tail = head = new DLink<E>(null,null); // Create header
-                cnt = 0;
-            }
-
-            /**
-             * Remove all elements
-             */
-            public void clear() {
-                head.setNext(null); // Drop access to links
-                curr = tail = head = new DLink<E>(null,null); // Create header
-                cnt = 0;
-            }
-
-
-            /** Insert "it" at current position */
-            public void insert(E it) {
-                curr.setNext(new DLink<E>(it, curr, curr.next()));
-                curr.next().next().setPrev(curr.next());
-                cnt++;
-            } /** Append "it" to list */
-            public void append(E it) {
-                tail.setPrev(new DLink<E>(it, tail.prev(), tail));
-                tail.prev().prev().setNext(tail.prev());
-                cnt++;
-            } /** Remove and return current element */
-            public E remove() {
-                if (curr.next() == tail) return null; // Nothing to remove
-                E it = curr.next().element(); // Remember value
-                curr.next().next().setPrev(curr);
-                curr.setNext(curr.next().next()); // Remove from list
-                cnt--; // Decrement the count
-                return it; // Return value removed
-            } /** Move curr one step left; no change if at front */
-            public void prev() {
-                if (curr != head) // Can’t back up from list head
-                    curr = curr.prev();
-            }
-            public int getsize(){
-                return cnt;
-            }
-
-
+        DLink<State> next() {
+            return next;
         }
 
-// //////////////////////////////////////// End double link list ////////////////////////////////////////////////////////////////////////////////////////////
-
-        // /////////////////////////////////// Adding States to  the Double link list ////////////////////////
-
-
-
-        // Link list of injuries
-
-        LList injuries = new LList<element>();
-
-        injuries.insert(injured1);
-        injuries.insert(injured2);
-        injuries.insert(injured3);
-        injuries.insert(injured4);
-        injuries.insert(injured5);
-        injuries.insert(injured6);
-
-        //System.out.println(injured1.getInfo());
-        //System.out.println(injuries.getValue().getInfo());
-
-
-        AList injuriesofcity1 =new AList<PointerInj>();
-        AList injuriesofcity2 =new AList<PointerInj>();
-        AList injuriesofcity3 =new AList<PointerInj>();
-        AList injuriesofcity4 =new AList<PointerInj>();
-        AList injuriesofcity5 =new AList<PointerInj>();
-        AList injuriesofcity6 =new AList<PointerInj>();
-
-
-        // State city1=new State(3.5,95.5,row1,injuriesofcity);
-
-        getnode<element> inj1= new getnode<element>(injuries,0);
-        getnode<element> inj2= new getnode<element>(injuries,1);
-        getnode<element> inj3= new getnode<element>(injuries,2);
-        getnode<element> inj4= new getnode<element>(injuries,3);
-        getnode<element> inj5= new getnode<element>(injuries,4);
-        getnode<element> inj6= new getnode<element>(injuries,5);
-
-        // ///////////////////////////////////////////////////////////// defining Related States ////////////////////////////////////////////////////////
-
-        AList<State> Tocity1=new AList<State>();
-
-        AList<State> Tocity2=new AList<State>();
-
-        AList<State> Tocity3=new AList<State>();
-
-        AList<State> Tocity4=new AList<State>();
-
-        AList<State> Tocity5=new AList<State>();
-
-        AList<State> Tocity6=new AList<State>();
-
-
-// ///////////////////////////////////////////////////////////// End of defining Related States /////////////////////////////////////////////////////
-
-// ///////////////////////////////////////////////////////////// Defining the states ////////////////////////////////////////////////////////////////
-
-        State city1= new State(3.232,3.545,null,injuriesofcity1);
-        State city2= new State(7.5,4.5,null,injuriesofcity2);
-        State city3= new State(9.5,4.5,null,injuriesofcity3);
-        State city4= new State(10.5,4.5,null,injuriesofcity4);
-        State city5= new State(11.5,4.5,null,injuriesofcity5);
-        State city6= new State(12.5,4.5,null,injuriesofcity6);
-
-// ///////////////////////////////////////////////////////////// End of  Defining the states /////////////////////////////////////////////////////
-
-// ///////////////////////////////////////////////////////////// Adding Related States  to cities  //////////////////////////////////////////////////
-
-        Tocity1.insert(city1);
-        Tocity1.insert(city5);
-
-        Tocity2.insert(city1);
-        Tocity2.insert(city5);
-        Tocity2.insert(city3);
-
-        Tocity3.insert(city2);
-        Tocity3.insert(city4);
-
-        Tocity4.insert(city3);
-        Tocity4.insert(city5);
-        Tocity4.insert(city6);
-
-        Tocity5.insert(city1);
-        Tocity5.insert(city2);
-        Tocity5.insert(city4);
-
-        Tocity6.insert(city4);
-
-// /////////////////////////////////////////////////////////////  End of Adding Related States  to cities  ///////////////////////////////////////////
-
-        city1.path=Tocity1;
-        city2.path=Tocity2;
-        city3.path=Tocity3;
-        city4.path=Tocity4;
-        city5.path=Tocity5;
-        city6.path=Tocity6;
-
-
-// ///////////////////////////////////////////////////////////// inserting the injuries of Cities /////////////////////////////////////////////////////
-
-        injuriesofcity1.insert(inj1);
-        injuriesofcity2.insert(inj2);
-        injuriesofcity3.insert(inj3);
-        injuriesofcity4.insert(inj4);
-        injuriesofcity5.insert(inj5);
-        injuriesofcity6.insert(inj6);
-
-// ///////////////////////////////////////////////////////////// End of inserting the injuries of Cities //////////////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////// start of inserting the cities To double link list ////////////////////////////////////////////
-
-
-
-        DLList DLinkListofCities=public new DLList<State>();
-        DLinkListofCities.insert(city1);
-        DLinkListofCities.insert(city2);
-        DLinkListofCities.insert(city3);
-        DLinkListofCities.insert(city4);
-        DLinkListofCities.insert(city5);
-        DLinkListofCities.insert(city6);
-
-
-
-// ///////////////////////////////////////////////////////////// End of inserting the cities To double link list /////////////////////////////////////////////
-// ///////////////////////////////////////////////////////////// defining Matrix ///////////////////////////////////////////////////////////////////////////
-
-
-        //     Part 1   ( to end)
-
-
-        AList<AList<Integer>> khodemun = new AList<AList<Integer>>();
-        AList<Integer> row1 = new AList<Integer>();
-        AList<Integer> row2 = new AList<Integer>();
-        AList<Integer> row3 = new AList<Integer>();
-        AList<Integer> row4 = new AList<Integer>();
-        AList<Integer> row5 = new AList<Integer>();
-        AList<Integer> row6 = new AList<Integer>();
-        row1.insert(0);
-        row1.insert(1);
-        row1.insert(0);
-        row1.insert(0);
-        row1.insert(1);
-        row1.insert(0);
-
-        row2.insert(1);
-        row2.insert(0);
-        row2.insert(1);
-        row2.insert(0);
-        row2.insert(1);
-        row2.insert(0);
-
-        row3.insert(0);
-        row3.insert(1);
-        row3.insert(0);
-        row3.insert(1);
-        row3.insert(0);
-        row3.insert(0);
-
-        row4.insert(0);
-        row4.insert(0);
-        row4.insert(1);
-        row4.insert(0);
-        row4.insert(1);
-        row4.insert(1);
-
-        row5.insert(1);
-        row5.insert(1);
-        row5.insert(0);
-        row5.insert(1);
-        row5.insert(0);
-        row5.insert(0);
-
-        row6.insert(0);
-        row6.insert(0);
-        row6.insert(0);
-        row6.insert(1);
-        row6.insert(0);
-        row6.insert(0);
-
-
-        khodemun.insert(row1);
-        khodemun.insert(row2);
-        khodemun.insert(row3);
-        khodemun.insert(row4);
-        khodemun.insert(row5);
-        khodemun.insert(row6);
-
-        // End of part 1
-
-// ///////////////////////////////////////////////////////////// End of defining Matrix//////////////////////////////////////////////////////////////
-
-
-       // System.out.println(khodemun.getValue().getValue());
-
-
+        DLink<State> setNext(DLink<State> nextval) {
+            return next = nextval;
         }
-    class isBipartite {
-        final int V = DLinkListofCities.getsize();
-        boolean isBipartite(DLList<State> DLinkListofCities) {
-            int colorArr[] = new int[V];
-            for(int i=0; i<V; i++) {
-                colorArr[i] = -1;
-            }
-            colorArr[0]=1;
-            for (int i=0;i<V;DLinkListofCities.next()){
-                AList<state> adjacent = DLinkListofCities.element().getPath();
-                for(int j=0; j<adjacent.length() ; j++) {
-                    if(colorArr[j] == -1){
-                        colorArr[j] = 1-colorArr[i];
-                    }
-                    else if (colorArr[i] == colorArr[j]) {
-                        return false;
-                    }
-                }
-            }
-            return true;
+
+        DLink<State> prev() {
+            return prev;
+        }
+
+        DLink<State> setPrev(DLink<State> prevval) {
+            return prev = prevval;
+        }
+
+        State element() {
+            return element;
+        }
+
+        State setElement(State it) {
+            return element = it;
+        }
+    }
+
+    class DLList<E>  {
+        private DLink<E> head;
+        private DLink<E> tail;
+        protected DLink<E> curr;
+        private int cnt;
+
+
+
+        DLList(int size) {
+            this();
+        }
+        DLList() {
+            curr = tail = head = new DLink<E>(null,null); // Create header
+            cnt = 0;
+        }
+        public void clear() {
+            head.setNext(null); // Drop access to links
+            curr = tail = head = new DLink<E>(null,null); // Create header
+            cnt = 0;
+        }
+
+
+        public void insert(E it) {
+            curr.setNext(new DLink<E>(it, curr, curr.next()));
+            curr.next().next().setPrev(curr.next());
+            cnt++;
+        }
+        public void append(E it) {
+            tail.setPrev(new DLink<E>(it, tail.prev(), tail));
+            tail.prev().prev().setNext(tail.prev());
+            cnt++;
+        }
+        public E remove() {
+            if (curr.next() == tail) return null; // Nothing to remove
+            E it = curr.next().element(); // Remember value
+            curr.next().next().setPrev(curr);
+            curr.setNext(curr.next().next()); // Remove from list
+            cnt--; // Decrement the count
+            return it; // Return value removed
+        }
+        public void prev() {
+            if (curr != head) // Can’t back up from list head
+                curr = curr.prev();
+        }
+        public int getsize(){
+            return cnt;
+        }
+
+
+    }
+
+
+
+
+    static class State {
+        private double  x;
+        private double y;
+        public AList<State> path;
+        private AList<element> injuries;
+
+        State(double iks, double ipsilon, AList p, AList i) {
+            x = iks;
+            y = ipsilon;
+            path = p;
+            injuries = i;
+        }
+        AList<State> getPath() {
+            return path;
+        }
+    }
+
+    static class element {
+        private String name;
+        private Integer age;
+        private Integer injury;
+
+        element(String n, Integer a, Integer i) {
+            name = n;
+            age = a;
+            injury = i;
+        }
+
+        public Triplet getInfo() {
+            Triplet<String, Integer, Integer> temp = new Triplet<String, Integer, Integer>(name, age, injury);
+            return temp;
+        }
+    }
+
+    static class Triplet<n, a, i> {
+        public final String name;
+        public final Integer age;
+        public final Integer injury;
+
+        public Triplet(String first, Integer second, Integer third) {
+            this.name = first;
+            this.age = second;
+            this.injury = third;
+        }
+        public String toString() {
+            return name + ", " + age.toString() + ", " + injury.toString();
+        }
+    }
+
+    static class getnode<E>{
+        private LList<E> llist;
+        private int count;
+        private Link<E> curr ;
+        private Link<E> next;
+        private Link<E> prev;
+
+
+        getnode(LList<E> llist,int count){
+            llist=llist;
+            count=count;
+
+            llist.moveToPos(count);
+            this.curr=llist.curr();
+            this.next=llist.next();
+            this.prev=llist.prev();
         }
     }
 
 
-    static void Prim(int[][] G, int s, int[] D, int[] V) {
-        int[] visited = new int[G.length];
-        for(int i=0;i<G.length;i++) visited[i]=0;
-        for (int i=0; i<G.length; i++) // Initialize
-            D[i] = Integer.MAX_VALUE;
-        D[s] = 0;
-        for (int i=0; i<G.length; i++) { // Process the vertices
-            int v = minVertex(G, D);
-            visited[v]=1;
-            if (v != s) AddEdgetoMST(V[v], v);
-            if (D[v] == Integer.MAX_VALUE) return; // Unreachable
-            for (int w ; w < G.length; w = G.next(v, w))
-                if (D[w] > G[v][w]) {
-                    D[w] = G[v][w];
-                    V[w] = v;
-                }
-        }
-    }
 
-}
+
+    }
