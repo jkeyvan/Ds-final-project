@@ -118,7 +118,7 @@ public class Array {
     }
 
 
-    class Link<E> {
+    static class Link<E> {
         private E element;
         private Link<E> next;
 
@@ -148,7 +148,7 @@ public class Array {
         }
     }
 
-    class LList<E> {
+    static class LList<E> {
         private Link<E> head;
         private Link<E> tail;
         protected Link<E> curr;
@@ -248,7 +248,7 @@ public class Array {
     }
 
 
-    class DLink<State> {
+    static class DLink<State> {
 
         private State element;
         private DLink<State> next;
@@ -291,7 +291,7 @@ public class Array {
         }
     }
 
-    class DLList<E>  {
+    static class DLList<E>  {
         private DLink<E> head;
         private DLink<E> tail;
         protected DLink<E> curr;

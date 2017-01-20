@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a2341b4-3fe8-4149-bf9c-e13164c25002" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Array.java" afterPath="$PROJECT_DIR$/src/com/company/Array.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/myQueue.java" afterPath="$PROJECT_DIR$/src/com/company/myQueue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/run.java" afterPath="$PROJECT_DIR$/src/com/company/run.java" />
     </list>
     <ignored path="ds.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,23 +42,21 @@
       <file leaf-file-name="Array.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Array.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="343" column="0" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
+            <state relative-caret-position="600">
+              <caret line="95" column="14" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
               <folding>
                 <element signature="class#List#0;class#Array#0" expanded="false" />
-                <element signature="class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#AList#1;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#insert#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#append#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#remove#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#moveToPos#0;class#AList#0;class#Array#0" expanded="false" />
-                <element signature="method#getValue#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#find#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#update#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="class#Link#0;class#Array#0" expanded="false" />
                 <element signature="method#Link#0;class#Link#0;class#Array#0" expanded="false" />
-                <element signature="e#3313#3314#0" expanded="true" />
-                <element signature="e#3358#3359#0" expanded="true" />
+                <element signature="e#3320#3321#0" expanded="true" />
+                <element signature="e#3365#3366#0" expanded="true" />
                 <element signature="class#LList#0;class#Array#0" expanded="false" />
                 <element signature="method#LList#1;class#LList#0;class#Array#0" expanded="false" />
                 <element signature="method#clear#0;class#LList#0;class#Array#0" expanded="false" />
@@ -99,29 +98,50 @@
       <file leaf-file-name="run.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+            <state relative-caret-position="399">
+              <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
               <folding>
-                <element signature="method#Prim#0;class#run#0" expanded="false" />
-                <element signature="e#2051#2066#0" expanded="true" />
-                <element signature="e#2140#2155#0" expanded="true" />
-                <element signature="e#2229#2244#0" expanded="true" />
-                <element signature="e#2318#2333#0" expanded="true" />
-                <element signature="e#2407#2422#0" expanded="true" />
-                <element signature="e#2496#2511#0" expanded="true" />
-                <element signature="e#2583#2596#0" expanded="true" />
-                <element signature="e#2657#2670#0" expanded="true" />
-                <element signature="e#2731#2744#0" expanded="true" />
-                <element signature="e#2805#2818#0" expanded="true" />
-                <element signature="e#2879#2892#0" expanded="true" />
-                <element signature="e#2953#2966#0" expanded="true" />
-                <element signature="e#4649#4671#0" expanded="true" />
-                <element signature="e#4726#4735#0" expanded="true" />
-                <element signature="e#4790#4799#0" expanded="true" />
-                <element signature="e#4854#4863#0" expanded="true" />
-                <element signature="e#4918#4927#0" expanded="true" />
-                <element signature="e#4982#4991#0" expanded="true" />
-                <element signature="e#5046#5055#0" expanded="true" />
+                <element signature="class#Bipartite#0;class#run#0" expanded="false" />
+                <element signature="e#597#606#0" expanded="true" />
+                <element signature="method#main#0;class#run#0" expanded="false" />
+                <element signature="e#3784#3799#0" expanded="true" />
+                <element signature="e#3875#3890#0" expanded="true" />
+                <element signature="e#3966#3981#0" expanded="true" />
+                <element signature="e#4057#4072#0" expanded="true" />
+                <element signature="e#4148#4163#0" expanded="true" />
+                <element signature="e#4239#4254#0" expanded="true" />
+                <element signature="e#4329#4342#0" expanded="true" />
+                <element signature="e#4405#4418#0" expanded="true" />
+                <element signature="e#4481#4494#0" expanded="true" />
+                <element signature="e#4557#4570#0" expanded="true" />
+                <element signature="e#4633#4646#0" expanded="true" />
+                <element signature="e#4709#4722#0" expanded="true" />
+                <element signature="e#6443#6465#0" expanded="true" />
+                <element signature="e#6520#6529#0" expanded="true" />
+                <element signature="e#6584#6593#0" expanded="true" />
+                <element signature="e#6648#6657#0" expanded="true" />
+                <element signature="e#6712#6721#0" expanded="true" />
+                <element signature="e#6776#6785#0" expanded="true" />
+                <element signature="e#6840#6849#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myQueue.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/myQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+              <folding>
+                <element signature="class#SNode#0;class#myQueue#0" expanded="false" />
+                <element signature="method#SNode#0;class#SNode#0;class#myQueue#0" expanded="false" />
+                <element signature="method#setValue#0;class#SNode#0;class#myQueue#0" expanded="false" />
+                <element signature="method#setNext#0;class#SNode#0;class#myQueue#0" expanded="false" />
+                <element signature="class#Queue#0;class#myQueue#0" expanded="false" />
+                <element signature="class#AQueue#0;class#myQueue#0" expanded="false" />
+                <element signature="e#1146#1176#1" expanded="true" />
+                <marker date="1484876242619" expanded="false" signature="1987:2940" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -172,11 +192,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/company/Tree.java" />
         <option value="$PROJECT_DIR$/src/com/company/Queue.java" />
-        <option value="$PROJECT_DIR$/src/com/company/myQueue.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/mColoringProblem.java" />
         <option value="$PROJECT_DIR$/src/com/company/Bipartite.java" />
         <option value="$PROJECT_DIR$/src/com/company/Array.java" />
+        <option value="$PROJECT_DIR$/src/com/company/myQueue.java" />
         <option value="$PROJECT_DIR$/src/com/company/run.java" />
       </list>
     </option>
@@ -719,12 +739,12 @@
       <workItem from="1484570778486" duration="3007000" />
       <workItem from="1484774862797" duration="1411000" />
       <workItem from="1484791291927" duration="9622000" />
-      <workItem from="1484871017083" duration="2907000" />
+      <workItem from="1484871017083" duration="7445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34865000" />
+    <option name="totallyTimeSpent" value="39403000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
@@ -793,19 +813,17 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="class#List#0;class#Array#0" expanded="false" />
-            <element signature="class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#AList#1;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#insert#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#append#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#remove#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#moveToPos#0;class#AList#0;class#Array#0" expanded="false" />
-            <element signature="method#getValue#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="class#Link#0;class#Array#0" expanded="false" />
             <element signature="method#Link#0;class#Link#0;class#Array#0" expanded="false" />
-            <element signature="e#3313#3314#0" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
+            <element signature="e#3320#3321#0" expanded="true" />
+            <element signature="e#3365#3366#0" expanded="true" />
             <element signature="class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#LList#1;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#clear#0;class#LList#0;class#Array#0" expanded="false" />
@@ -935,24 +953,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Queue.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/company/myQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
-          <folding>
-            <element signature="e#627#657#1" expanded="true" />
-            <element signature="e#1350#1351#0" expanded="true" />
-            <element signature="e#1405#1406#0" expanded="true" />
-            <element signature="e#1438#1439#0" expanded="true" />
-            <element signature="e#1515#1516#0" expanded="true" />
-            <element signature="e#1753#1754#0" expanded="true" />
-            <element signature="e#1791#1792#0" expanded="true" />
-            <element signature="e#2605#2606#0" expanded="true" />
-            <element signature="e#2648#2649#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-988">
@@ -982,25 +982,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/myQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+          <folding>
+            <element signature="class#SNode#0;class#myQueue#0" expanded="false" />
+            <element signature="method#SNode#0;class#SNode#0;class#myQueue#0" expanded="false" />
+            <element signature="method#setValue#0;class#SNode#0;class#myQueue#0" expanded="false" />
+            <element signature="method#setNext#0;class#SNode#0;class#myQueue#0" expanded="false" />
+            <element signature="class#Queue#0;class#myQueue#0" expanded="false" />
+            <element signature="class#AQueue#0;class#myQueue#0" expanded="false" />
+            <element signature="e#1146#1176#1" expanded="true" />
+            <marker date="1484876242619" expanded="false" signature="1987:2940" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Array.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="343" column="0" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
+        <state relative-caret-position="600">
+          <caret line="95" column="14" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
           <folding>
             <element signature="class#List#0;class#Array#0" expanded="false" />
-            <element signature="class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#AList#1;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#insert#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#append#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#remove#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#moveToPos#0;class#AList#0;class#Array#0" expanded="false" />
-            <element signature="method#getValue#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="class#Link#0;class#Array#0" expanded="false" />
             <element signature="method#Link#0;class#Link#0;class#Array#0" expanded="false" />
-            <element signature="e#3313#3314#0" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
+            <element signature="e#3320#3321#0" expanded="true" />
+            <element signature="e#3365#3366#0" expanded="true" />
             <element signature="class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#LList#1;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#clear#0;class#LList#0;class#Array#0" expanded="false" />
@@ -1040,29 +1055,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+        <state relative-caret-position="399">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
           <folding>
-            <element signature="method#Prim#0;class#run#0" expanded="false" />
-            <element signature="e#2051#2066#0" expanded="true" />
-            <element signature="e#2140#2155#0" expanded="true" />
-            <element signature="e#2229#2244#0" expanded="true" />
-            <element signature="e#2318#2333#0" expanded="true" />
-            <element signature="e#2407#2422#0" expanded="true" />
-            <element signature="e#2496#2511#0" expanded="true" />
-            <element signature="e#2583#2596#0" expanded="true" />
-            <element signature="e#2657#2670#0" expanded="true" />
-            <element signature="e#2731#2744#0" expanded="true" />
-            <element signature="e#2805#2818#0" expanded="true" />
-            <element signature="e#2879#2892#0" expanded="true" />
-            <element signature="e#2953#2966#0" expanded="true" />
-            <element signature="e#4649#4671#0" expanded="true" />
-            <element signature="e#4726#4735#0" expanded="true" />
-            <element signature="e#4790#4799#0" expanded="true" />
-            <element signature="e#4854#4863#0" expanded="true" />
-            <element signature="e#4918#4927#0" expanded="true" />
-            <element signature="e#4982#4991#0" expanded="true" />
-            <element signature="e#5046#5055#0" expanded="true" />
+            <element signature="class#Bipartite#0;class#run#0" expanded="false" />
+            <element signature="e#597#606#0" expanded="true" />
+            <element signature="method#main#0;class#run#0" expanded="false" />
+            <element signature="e#3784#3799#0" expanded="true" />
+            <element signature="e#3875#3890#0" expanded="true" />
+            <element signature="e#3966#3981#0" expanded="true" />
+            <element signature="e#4057#4072#0" expanded="true" />
+            <element signature="e#4148#4163#0" expanded="true" />
+            <element signature="e#4239#4254#0" expanded="true" />
+            <element signature="e#4329#4342#0" expanded="true" />
+            <element signature="e#4405#4418#0" expanded="true" />
+            <element signature="e#4481#4494#0" expanded="true" />
+            <element signature="e#4557#4570#0" expanded="true" />
+            <element signature="e#4633#4646#0" expanded="true" />
+            <element signature="e#4709#4722#0" expanded="true" />
+            <element signature="e#6443#6465#0" expanded="true" />
+            <element signature="e#6520#6529#0" expanded="true" />
+            <element signature="e#6584#6593#0" expanded="true" />
+            <element signature="e#6648#6657#0" expanded="true" />
+            <element signature="e#6712#6721#0" expanded="true" />
+            <element signature="e#6776#6785#0" expanded="true" />
+            <element signature="e#6840#6849#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -7,25 +7,88 @@ import java.util.ArrayList;
  */
 public class run {
 
-    class isBipartite {}
-    static void Prim(int[][] G, int s, int[] D, int[] V) {
-        int[] visited = new int[G.length];
-        for(int i=0;i<G.length;i++) visited[i]=0;
-        for (int i=0; i<G.length; i++) // Initialize
-            D[i] = Integer.MAX_VALUE;
-        D[s] = 0;
-        for (int i=0; i<G.length; i++) { // Process the vertices
-            int v = minVertex(G, D);
-            visited[v]=1;
-            if (v != s) AddEdgetoMST(V[v], v);
-            if (D[v] == Integer.MAX_VALUE) return; // Unreachable
-            for (int w ; w < G.length; w = G.next(v, w))
-                if (D[w] > G[v][w]) {
-                    D[w] = G[v][w];
-                    V[w] = v;
-                }
+    class Bipartite {
+
+        private Array.AList<Array.AList<Integer>> G;   // my 2d array
+
+        Bipartite(Array.AList<Array.AList<Integer>> Graph2) {    // constructor
+            G = Graph2;
         }
+
+        private int V = G.length();
+
+        boolean isBipartite() {
+            int colorArr[] = new int[V];
+            for (int i = 0; i < V; ++i)
+                colorArr[i] = -1;
+
+            colorArr[0] = 1;
+
+
+            myQueue.AQueue<Integer> q = new myQueue.AQueue<Integer>();
+            q.enqueue(0);
+
+
+            while (q.length() != 0) {
+                int u = q.dequeue();
+                for (int v = 0; v < V; ++v) {
+
+                    G.moveToPos(u);
+                    Array.AList A;
+                    A = G.getValue();
+                    A.moveToPos(v);
+                    int uv = (int) A.getValue();
+
+                    if ((uv) == 1 && colorArr[v] == -1) {
+                        colorArr[v] = 1 - colorArr[u];
+                        q.enqueue(v);
+                    } else if (uv == 1 && colorArr[v] == colorArr[u]) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
     }
+
+    /** @return v’s next neighbor after w */
+
+public int next(Array.AList<Array.AList<Integer>> Mark,int v, int w) {
+        int i;
+        for (i=w+1; i<Mark.length(); i++)
+
+            Mark.moveToPos(v);
+            Array.AList A;
+            A = Mark.getValue();
+            A.moveToPos(i);
+            int vi = (int) A.getValue();
+            if (vi != 0)
+                return i;
+        return Mark.length(); // No next edge;
+    }
+
+    void Prim(Array.AList<Array.AList<Integer>> G, int s, int[] D, int[] V) {
+            int[] visited = new int[G.length()];
+            for (int i = 0; i < G.length; i++) visited[i] = 0;
+            for (int i = 0; i < G.length; i++) // Initialize
+                D[i] = Integer.MAX_VALUE;
+            D[s] = 0;
+            for (int i = 0; i < G.length; i++) { // Process the vertices
+                int v = minVertex(G, D);
+                visited[v] = 1;
+                if (v != s) AddEdgetoMST(V[v], v);
+                if (D[v] == Integer.MAX_VALUE) return; // Unreachable
+                for (int w; w < G.length(); w = next(G,v, w))
+                    if (D[w] > G[v][w]) {
+                        D[w] = G[v][w];
+                        V[w] = v;
+                    }
+            }
+        }
+
+
+
 
     public static void main(String[] args) {
 
@@ -45,40 +108,40 @@ public class run {
         injuries.insert(injured5);
         injuries.insert(injured6);
 
-        Array.AList injuriesofcity1 =new Array.AList<Array.element>();
-        Array.AList injuriesofcity2 =new Array.AList<Array.element>();
-        Array.AList injuriesofcity3 =new Array.AList<Array.element>();
-        Array.AList injuriesofcity4 =new Array.AList<Array.element>();
-        Array.AList injuriesofcity5 =new Array.AList<Array.element>();
-        Array.AList injuriesofcity6 =new Array.AList<Array.element>();
+        Array.AList injuriesofcity1 = new Array.AList<Array.element>();
+        Array.AList injuriesofcity2 = new Array.AList<Array.element>();
+        Array.AList injuriesofcity3 = new Array.AList<Array.element>();
+        Array.AList injuriesofcity4 = new Array.AList<Array.element>();
+        Array.AList injuriesofcity5 = new Array.AList<Array.element>();
+        Array.AList injuriesofcity6 = new Array.AList<Array.element>();
 
-        Array.getnode<Array.element> inj1= new Array.getnode<Array.element>(injuries,0);
-        Array.getnode<Array.element> inj2= new Array.getnode<Array.element>(injuries,1);
-        Array.getnode<Array.element> inj3= new Array.getnode<Array.element>(injuries,2);
-        Array.getnode<Array.element> inj4= new Array.getnode<Array.element>(injuries,3);
-        Array.getnode<Array.element> inj5= new Array.getnode<Array.element>(injuries,4);
-        Array.getnode<Array.element> inj6= new Array.getnode<Array.element>(injuries,5);
-
-
-        Array.AList<Array.State> Tocity1=new Array.AList<Array.State>();
-
-        Array.AList<Array.State> Tocity2=new Array.AList<Array.State>();
-
-        Array.AList<Array.State> Tocity3=new Array.AList<Array.State>();
-
-        Array.AList<Array.State> Tocity4=new Array.AList<Array.State>();
-
-        Array.AList<Array.State> Tocity5=new Array.AList<Array.State>();
-
-        Array.AList<Array.State> Tocity6=new Array.AList<Array.State>();
+        Array.getnode<Array.element> inj1 = new Array.getnode<Array.element>(injuries, 0);
+        Array.getnode<Array.element> inj2 = new Array.getnode<Array.element>(injuries, 1);
+        Array.getnode<Array.element> inj3 = new Array.getnode<Array.element>(injuries, 2);
+        Array.getnode<Array.element> inj4 = new Array.getnode<Array.element>(injuries, 3);
+        Array.getnode<Array.element> inj5 = new Array.getnode<Array.element>(injuries, 4);
+        Array.getnode<Array.element> inj6 = new Array.getnode<Array.element>(injuries, 5);
 
 
-        Array.State city1= new Array.State(3.232,3.545,null,injuriesofcity1);
-        Array.State city2= new Array.State(7.5,4.5,null,injuriesofcity2);
-        Array.State city3= new Array.State(9.5,4.5,null,injuriesofcity3);
-        Array.State city4= new Array.State(10.5,4.5,null,injuriesofcity4);
-        Array.State city5= new Array.State(11.5,4.5,null,injuriesofcity5);
-        Array.State city6= new Array.State(12.5,4.5,null,injuriesofcity6);
+        Array.AList<Array.State> Tocity1 = new Array.AList<Array.State>();
+
+        Array.AList<Array.State> Tocity2 = new Array.AList<Array.State>();
+
+        Array.AList<Array.State> Tocity3 = new Array.AList<Array.State>();
+
+        Array.AList<Array.State> Tocity4 = new Array.AList<Array.State>();
+
+        Array.AList<Array.State> Tocity5 = new Array.AList<Array.State>();
+
+        Array.AList<Array.State> Tocity6 = new Array.AList<Array.State>();
+
+
+        Array.State city1 = new Array.State(3.232, 3.545, null, injuriesofcity1);
+        Array.State city2 = new Array.State(7.5, 4.5, null, injuriesofcity2);
+        Array.State city3 = new Array.State(9.5, 4.5, null, injuriesofcity3);
+        Array.State city4 = new Array.State(10.5, 4.5, null, injuriesofcity4);
+        Array.State city5 = new Array.State(11.5, 4.5, null, injuriesofcity5);
+        Array.State city6 = new Array.State(12.5, 4.5, null, injuriesofcity6);
 
 
         Tocity1.insert(city1);
@@ -97,12 +160,12 @@ public class run {
         Tocity6.insert(city4);
 
 
-        city1.path=Tocity1;
-        city2.path=Tocity2;
-        city3.path=Tocity3;
-        city4.path=Tocity4;
-        city5.path=Tocity5;
-        city6.path=Tocity6;
+        city1.path = Tocity1;
+        city2.path = Tocity2;
+        city3.path = Tocity3;
+        city4.path = Tocity4;
+        city5.path = Tocity5;
+        city6.path = Tocity6;
 
 
         injuriesofcity1.insert(inj1);
@@ -113,7 +176,7 @@ public class run {
         injuriesofcity6.insert(inj6);
 
 
-        Array.DLList DLinkListofCities=new Array.DLList<Array.State>();
+        Array.DLList DLinkListofCities = new Array.DLList<Array.State>();
         DLinkListofCities.insert(city1);
         DLinkListofCities.insert(city2);
         DLinkListofCities.insert(city3);
@@ -180,6 +243,10 @@ public class run {
         khodemun.insert(row6);
 
     }
+}
+
+
+
 
 
 
