@@ -148,7 +148,7 @@ public class run {
 //            for(int p=0;p<V.length;p++) System.out.print(V[p]);
         }
 
-        System.out.println(Arrays.toString(V));
+        //System.out.println(Arrays.toString(V));
         int[][] ali=new int[6][6];
         for(int i=0;i<6;i++) {
             for(int j=0;j<6;j++){
@@ -166,6 +166,76 @@ public class run {
 
 
 
+
+    }
+
+
+
+
+
+    static class ShortestPath
+    {
+        static final int V=6;
+        int minDistance(int dist[], Boolean sptSet[])
+        {
+
+            int min = Integer.MAX_VALUE, min_index=-1;
+
+            for (int v = 0; v < V; v++)
+                if (sptSet[v] == false && dist[v] <= min)
+                {
+                    min = dist[v];
+                    min_index = v;
+                }
+
+            return min_index;
+        }
+
+
+
+        void printSolution(int dist[], int n)
+        {
+            System.out.println("Vertex   Distance from Source");
+            for (int i = 0; i < V; i++)
+                System.out.println(i+" \t\t "+dist[i]);
+        }
+
+
+        void dijkstra(Array.AList<Array.AList<Integer>> graph ,int src)
+        {
+            int dist[] = new int[V]; // The output array. dist[i] will hold
+            Boolean sptSet[] = new Boolean[V];
+
+            for (int i = 0; i < V; i++)
+            {
+                dist[i] = Integer.MAX_VALUE;
+                sptSet[i] = false;
+            }
+
+            dist[src] = 0;
+            for (int count = 0; count < V-1; count++)
+            {
+                int u = minDistance(dist, sptSet);
+                sptSet[u] = true;
+                int v=0;
+                while (v < V){
+                    graph.moveToPos(u);
+                    Array.AList<Integer> A;
+                    A=graph.getValue();
+                    A.moveToPos(v);
+                    int uv=A.getValue();
+                    if (!sptSet[v] && uv!=0 &&
+                            dist[u] != Integer.MAX_VALUE &&
+                            dist[u]+uv < dist[v])
+                        dist[v] = dist[u] + uv;
+                    v++;
+                }
+            }
+
+            printSolution(dist, V);
+        }
+
+        // Driver method
 
     }
 
@@ -328,10 +398,16 @@ public class run {
         int[] visited=new int[khodemun.length()];
         for( int j=0; j<khodemun.length(); j++) visited[ j]=0;
 
+        System.out.println("######################## MST Prim Graph ####################### \n");
+        Prim(khodemun,visited);                                          // prim run
 
-        Prim(khodemun,visited);
-        Bipartite dividable=new Bipartite();
+        System.out.println("######################## Is dividable ?  ###################### \n");
+        Bipartite dividable=new Bipartite();                             // is graph dividable(Bipartite)
         System.out.println(dividable.isBipartite(khodemun));
+
+        System.out.println("######################## shortest path  ######################## \n");
+        ShortestPath t = new ShortestPath();                             // dijkstra
+        t.dijkstra(khodemun, 1);
     }
 }
 
