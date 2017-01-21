@@ -151,6 +151,24 @@ public class run {
         }
 
         System.out.println(Arrays.toString(V));
+        int[][] ali=new int[6][6];
+        for(int i=0;i<6;i++) {
+            for(int j=0;j<6;j++){
+                ali[i][j]=0;
+            }
+        }
+
+        for(int k=0;k<6;k++){
+            ali[k][V[k]]=D[k];
+            ali[V[k]][k]=D[k];
+
+        }
+
+        System.out.println(Arrays.deepToString(ali));
+
+
+
+
     }
 
 
