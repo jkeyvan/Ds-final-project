@@ -7,22 +7,17 @@ import java.util.Arrays;
  * Created by kayvan on 1/20/2017.
  */
 public class run {
-    class Bipartite {
 
-        private Array.AList<Array.AList<Integer>> G;   // my 2d array
+    static class Bipartite {
 
-        Bipartite(Array.AList<Array.AList<Integer>> Graph2) {    // constructor
-            G = Graph2;
-        }
+        private int V = 6;
 
-        private int V = G.length();
-
-        boolean isBipartite() {
+        boolean isBipartite(Array.AList<Array.AList<Integer>> G) {
             int colorArr[] = new int[V];
             for (int i = 0; i < V; ++i)
                 colorArr[i] = -1;
 
-            colorArr[0] = 1;
+            colorArr[0] = 1 ;
 
 
             myQueue.AQueue<Integer> q = new myQueue.AQueue<Integer>();
@@ -51,6 +46,9 @@ public class run {
         }
 
     }
+
+
+
 
 
 
@@ -170,6 +168,8 @@ public class run {
 
 
     }
+
+
 
 
     public static void main(String[] args) {
@@ -330,6 +330,8 @@ public class run {
 
 
         Prim(khodemun,visited);
+        Bipartite dividable=new Bipartite();
+        System.out.println(dividable.isBipartite(khodemun));
     }
 }
 
