@@ -193,15 +193,17 @@ public class run {
 
 
 
-        void printSolution(int dist[], int n)
+        void printSolution(int dist[], int n,int goal)
         {
+
             System.out.println("Vertex   Distance from Source");
-            for (int i = 0; i < V; i++)
-                System.out.println(i+" \t\t "+dist[i]);
+//            for (int i = 0; i < V; i++)
+//                System.out.println(i+" \t\t "+dist[i]);
+            System.out.println(dist[goal]);
         }
 
 
-        void dijkstra(Array.AList<Array.AList<Integer>> graph ,int src)
+        void dijkstra(Array.AList<Array.AList<Integer>> graph ,int src,int goal)
         {
             int dist[] = new int[V]; // The output array. dist[i] will hold
             Boolean sptSet[] = new Boolean[V];
@@ -232,7 +234,7 @@ public class run {
                 }
             }
 
-            printSolution(dist, V);
+            printSolution(dist, V,goal);
         }
 
         // Driver method
@@ -407,7 +409,7 @@ public class run {
 
         System.out.println("######################## shortest path  ######################## \n");
         ShortestPath t = new ShortestPath();                             // dijkstra
-        t.dijkstra(khodemun, 1);
+        t.dijkstra(khodemun, 1,0);
     }
 }
 
