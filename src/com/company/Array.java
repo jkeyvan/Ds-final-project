@@ -1,6 +1,11 @@
 package com.company;
 
 
+import com.sun.deploy.util.ArrayUtil;
+
+
+import java.util.Arrays;
+
 public class Array {
 
     public interface List<E> {
@@ -96,25 +101,55 @@ public class Array {
             assert (curr >= 0) && (curr < listSize) :
                     "No current element";
             return listArray[curr];
+        }
 
+        public E setValue(int pos,E val){
+            return listArray[pos]=val;
 
         }
 
-        public E find(E item){
+        public int find(E item){
             int cnt2=0;
-            while (cnt2 < this.listSize);
-            cnt2++;
-            this.moveToPos(cnt2);
-            if (getValue()==item);
-            return item;
+            while (cnt2 < listSize) {
+
+                if (value(cnt2)==item) {return cnt2;}
+                cnt2++;
+
+            }
+            return -1;
+
+
+
+        }
+        public E value(int pos){
+            return listArray[pos];
+        }
+
+        public void update(E[] tolist){
+            listArray=tolist;
+            listSize=listArray.length;
+            maxSize=listSize;
+            curr=0;
+        }
+
+        public E[] delete(int pos){
+            E[] result=(E[]) new Object[listSize-1];
+            System.arraycopy(listArray,0,result,0,pos);
+            if (listArray.length!=pos){
+                System.arraycopy(listArray,pos+1,result,pos,listArray.length-pos-1);
+            listSize--;
+
+            }
+            return listArray=result;
+
+
 
 
         }
 
-        public void update(E item){
-            // I didnt have time
+        public void printlist(){
+            System.out.println(Arrays.toString(listArray));
         }
-
     }
 
 
@@ -164,7 +199,12 @@ public class Array {
             cnt = 0;
         }
 
-
+        public E delete(int pos){
+            E mydeletevalue=value(pos);
+            moveToPos(pos);
+            remove();
+            return mydeletevalue;
+        }
         public void clear() {
             head.setNext(null); // Drop access to links
             curr = tail = head = new Link<E>(null); // Create header
@@ -227,21 +267,37 @@ public class Array {
             if (curr.next() == null) return null;
             return curr.next().element();
         }
-        public E getItem(int num1){
 
+        public void setValue(int pos,E item){
+            moveToPos(pos+1);
+            curr.element=item;
+        }
+        public E value(int num1){
+            moveToStart();
             if (curr.next()==null) return null;
-            this.moveToPos(num1);
-            return this.getValue();
+            moveToPos(num1);
+            return getValue();
         }
-        public int find(element A){
-            int cnt1=0;
-            while (cnt1<=cnt);
-            this.moveToPos(cnt1);
-            if (curr.element == A);
-            return cnt1;
+        public int find(E item){
+            int cnt2=0;
+            while (cnt2 < cnt) {
+                if (value(cnt2)==item) return cnt2;
+                cnt2++;
+            }
+            return -1;}
+        public void update(LList<E> myllist){
+            //
         }
-        public void update(){
-            //  i dont have time
+
+        public void printlist(){
+
+            moveToStart();
+            //System.out.print(curr.element);
+        while(curr.next()!=null)    {
+            System.out.print(" --> " + curr.next().element() );
+            curr=curr.next();
+        }
+            System.out.println();
         }
 
 
@@ -311,6 +367,21 @@ public class Array {
             cnt = 0;
         }
 
+        public void moveToStart() {
+            curr = head;
+        }
+        public void moveToPos(int pos) {
+            assert (pos >= 0) && (pos <= cnt) : "Position out of range";
+            curr = head;
+            for (int i = 0; i < pos; i++) curr = curr.next();
+        }
+
+        public E delete(int pos){
+            E mydeletevalue=value(pos);
+            moveToPos(pos);
+            remove();
+            return mydeletevalue;
+        }
 
         public void insert(E it) {
             if(curr==tail && tail==head) curr=tail=head=new DLink<E>(it, null, null);
@@ -338,6 +409,42 @@ public class Array {
         public int getsize(){
             return cnt;
         }
+        public void setValue(int pos,E item){
+            moveToPos(pos+1);
+            curr.element=item;
+        }
+        public E value(int num1){
+            moveToStart();
+            if (curr.next()==null) return null;
+            moveToPos(num1);
+            return getValue();
+        }
+        public int find(E item){
+            int cnt2=0;
+            while (cnt2 < cnt) {
+                if (value(cnt2)==item) return cnt2;
+                cnt2++;
+            }
+            return -1;}
+        public void update(LList<E> myllist){
+            //
+        }
+        public E getValue() {
+            if (curr.next() == null) return null;
+            return curr.next().element();
+        }
+
+        public void printlist(){
+
+            moveToStart();
+            //System.out.print(curr.element);
+            while(curr.next()!=null)    {
+                System.out.print(" <--> " + curr.next().element() );
+                curr=curr.next();
+            }
+            System.out.println();
+        }
+
 
 
     }

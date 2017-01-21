@@ -397,19 +397,22 @@ public class run {
         khodemun.append(row6);
 
 
-        int[] visited=new int[khodemun.length()];
-        for( int j=0; j<khodemun.length(); j++) visited[ j]=0;
+//        int[] visited=new int[khodemun.length()];
+//        for( int j=0; j<khodemun.length(); j++) visited[ j]=0;
+//
+//        System.out.println("######################## MST Prim Graph ####################### \n");
+//        Prim(khodemun,visited);                                          // prim run
+//
+//        System.out.println("######################## Is dividable ?  ###################### \n");
+//        Bipartite dividable=new Bipartite();                             // is graph dividable(Bipartite)
+//        System.out.println(dividable.isBipartite(khodemun));
+//
+//        System.out.println("######################## shortest path  ######################## \n");
+//        ShortestPath t = new ShortestPath();                             // dijkstra
+//        t.dijkstra(khodemun, 1,0);
 
-        System.out.println("######################## MST Prim Graph ####################### \n");
-        Prim(khodemun,visited);                                          // prim run
 
-        System.out.println("######################## Is dividable ?  ###################### \n");
-        Bipartite dividable=new Bipartite();                             // is graph dividable(Bipartite)
-        System.out.println(dividable.isBipartite(khodemun));
 
-        System.out.println("######################## shortest path  ######################## \n");
-        ShortestPath t = new ShortestPath();                             // dijkstra
-        t.dijkstra(khodemun, 1,0);
     }
 }
 
