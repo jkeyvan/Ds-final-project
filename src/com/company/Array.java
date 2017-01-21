@@ -303,8 +303,7 @@ public class Array {
             this();
         }
         DLList() {
-            curr = tail = head = new DLink<E>(null,null); // Create header
-            cnt = 0;
+            curr = tail = head = new DLink<E>(null,null);
         }
         public void clear() {
             head.setNext(null); // Drop access to links
@@ -314,8 +313,9 @@ public class Array {
 
 
         public void insert(E it) {
-            curr.setNext(new DLink<E>(it, curr, curr.next()));
-            curr.next().next().setPrev(curr.next());
+            if(curr==tail && tail==head) curr=tail=head=new DLink<E>(it, null, null);
+            else{curr.setNext(new DLink<E>(it, curr, curr.next()));
+            curr.next().next().setPrev(curr.next());}
             cnt++;
         }
         public void append(E it) {

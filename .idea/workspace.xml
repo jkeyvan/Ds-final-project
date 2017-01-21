@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a2341b4-3fe8-4149-bf9c-e13164c25002" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/company/Bipartite.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/company/Tree.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/company/mColoringProblem.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ds/com/company/Tree.class" afterPath="$PROJECT_DIR$/out/production/ds/com/company/Tree.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ds/com/company/Tree$BinNode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ds/com/company/Tree.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ds/com/company/mColoringProblem.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ds/com/company/Array$DLList.class" afterPath="$PROJECT_DIR$/out/production/ds/com/company/Array$DLList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ds/com/company/run.class" afterPath="$PROJECT_DIR$/out/production/ds/com/company/run.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Array.java" afterPath="$PROJECT_DIR$/src/com/company/Array.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/run.java" afterPath="$PROJECT_DIR$/src/com/company/run.java" />
     </list>
     <ignored path="ds.iws" />
@@ -30,19 +31,18 @@
     <favorites_list name="ds" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="147">
-      <file leaf-file-name="Array.java" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="108">
+      <file leaf-file-name="Array.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Array.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="851">
-              <caret line="324" column="9" selection-start-line="324" selection-start-column="9" selection-end-line="324" selection-end-column="9" />
+            <state relative-caret-position="646">
+              <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
               <folding>
                 <element signature="class#List#0;class#Array#0" expanded="false" />
                 <element signature="method#AList#1;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#insert#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#append#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#remove#0;class#AList#0;class#Array#0" expanded="false" />
-                <element signature="method#moveToPos#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#find#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="method#update#0;class#AList#0;class#Array#0" expanded="false" />
                 <element signature="class#Link#0;class#Array#0" expanded="false" />
@@ -61,14 +61,18 @@
                 <element signature="method#getItem#0;class#LList#0;class#Array#0" expanded="false" />
                 <element signature="method#find#0;class#LList#0;class#Array#0" expanded="false" />
                 <element signature="method#update#0;class#LList#0;class#Array#0" expanded="false" />
-                <element signature="class#DLink#0;class#Array#0" expanded="false" />
                 <element signature="method#DLink#0;class#DLink#0;class#Array#0" expanded="false" />
                 <element signature="method#DLink#1;class#DLink#0;class#Array#0" expanded="false" />
-                <element signature="method#DLList#1;class#DLList#0;class#Array#0" expanded="false" />
-                <element signature="method#clear#0;class#DLList#0;class#Array#0" expanded="false" />
-                <element signature="method#append#0;class#DLList#0;class#Array#0" expanded="false" />
+                <element signature="e#6893#6894#0" expanded="true" />
+                <element signature="e#6938#6939#0" expanded="true" />
+                <element signature="e#7436#7437#0" expanded="true" />
+                <element signature="e#7466#7467#0" expanded="true" />
+                <element signature="e#7485#7486#0" expanded="true" />
+                <element signature="e#7553#7554#0" expanded="true" />
                 <element signature="method#remove#0;class#DLList#0;class#Array#0" expanded="false" />
                 <element signature="method#prev#0;class#DLList#0;class#Array#0" expanded="false" />
+                <element signature="e#8736#8737#0" expanded="true" />
+                <element signature="e#8770#8771#0" expanded="true" />
                 <element signature="class#State#0;class#Array#0" expanded="false" />
                 <element signature="method#State#0;class#State#0;class#Array#0" expanded="false" />
                 <element signature="class#element#0;class#Array#0" expanded="false" />
@@ -83,12 +87,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="run.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="-36">
+              <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#9052#9061#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,8 +143,8 @@
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/mColoringProblem.java" />
         <option value="$PROJECT_DIR$/src/com/company/Bipartite.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Array.java" />
         <option value="$PROJECT_DIR$/src/com/company/myQueue.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Array.java" />
         <option value="$PROJECT_DIR$/src/com/company/run.java" />
       </list>
     </option>
@@ -180,42 +187,7 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="company" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
@@ -703,12 +675,12 @@
       <workItem from="1484774862797" duration="1411000" />
       <workItem from="1484791291927" duration="9622000" />
       <workItem from="1484871017083" duration="10745000" />
-      <workItem from="1484887507435" duration="1109000" />
+      <workItem from="1484887507435" duration="18921000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43812000" />
+    <option name="totallyTimeSpent" value="61624000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -722,11 +694,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13250366" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27136433" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -808,7 +780,6 @@
             <element signature="method#insert#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#append#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#remove#0;class#AList#0;class#Array#0" expanded="false" />
-            <element signature="method#moveToPos#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="class#Link#0;class#Array#0" expanded="false" />
@@ -827,14 +798,18 @@
             <element signature="method#getItem#0;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#LList#0;class#Array#0" expanded="false" />
-            <element signature="class#DLink#0;class#Array#0" expanded="false" />
             <element signature="method#DLink#0;class#DLink#0;class#Array#0" expanded="false" />
             <element signature="method#DLink#1;class#DLink#0;class#Array#0" expanded="false" />
-            <element signature="method#DLList#1;class#DLList#0;class#Array#0" expanded="false" />
-            <element signature="method#clear#0;class#DLList#0;class#Array#0" expanded="false" />
-            <element signature="method#append#0;class#DLList#0;class#Array#0" expanded="false" />
+            <element signature="e#6893#6894#0" expanded="true" />
+            <element signature="e#6938#6939#0" expanded="true" />
+            <element signature="e#7436#7437#0" expanded="true" />
+            <element signature="e#7466#7467#0" expanded="true" />
+            <element signature="e#7485#7486#0" expanded="true" />
+            <element signature="e#7553#7554#0" expanded="true" />
             <element signature="method#remove#0;class#DLList#0;class#Array#0" expanded="false" />
             <element signature="method#prev#0;class#DLList#0;class#Array#0" expanded="false" />
+            <element signature="e#8736#8737#0" expanded="true" />
+            <element signature="e#8770#8771#0" expanded="true" />
             <element signature="class#State#0;class#Array#0" expanded="false" />
             <element signature="method#State#0;class#State#0;class#Array#0" expanded="false" />
             <element signature="class#element#0;class#Array#0" expanded="false" />
@@ -866,7 +841,6 @@
             <element signature="method#insert#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#append#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#remove#0;class#AList#0;class#Array#0" expanded="false" />
-            <element signature="method#moveToPos#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="class#Link#0;class#Array#0" expanded="false" />
@@ -885,14 +859,18 @@
             <element signature="method#getItem#0;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#LList#0;class#Array#0" expanded="false" />
-            <element signature="class#DLink#0;class#Array#0" expanded="false" />
             <element signature="method#DLink#0;class#DLink#0;class#Array#0" expanded="false" />
             <element signature="method#DLink#1;class#DLink#0;class#Array#0" expanded="false" />
-            <element signature="method#DLList#1;class#DLList#0;class#Array#0" expanded="false" />
-            <element signature="method#clear#0;class#DLList#0;class#Array#0" expanded="false" />
-            <element signature="method#append#0;class#DLList#0;class#Array#0" expanded="false" />
+            <element signature="e#6893#6894#0" expanded="true" />
+            <element signature="e#6938#6939#0" expanded="true" />
+            <element signature="e#7436#7437#0" expanded="true" />
+            <element signature="e#7466#7467#0" expanded="true" />
+            <element signature="e#7485#7486#0" expanded="true" />
+            <element signature="e#7553#7554#0" expanded="true" />
             <element signature="method#remove#0;class#DLList#0;class#Array#0" expanded="false" />
             <element signature="method#prev#0;class#DLList#0;class#Array#0" expanded="false" />
+            <element signature="e#8736#8737#0" expanded="true" />
+            <element signature="e#8770#8771#0" expanded="true" />
             <element signature="class#State#0;class#Array#0" expanded="false" />
             <element signature="method#State#0;class#State#0;class#Array#0" expanded="false" />
             <element signature="class#element#0;class#Array#0" expanded="false" />
@@ -1027,25 +1005,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Array.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="324" column="9" selection-start-line="324" selection-start-column="9" selection-end-line="324" selection-end-column="9" />
+        <state relative-caret-position="646">
+          <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
           <folding>
             <element signature="class#List#0;class#Array#0" expanded="false" />
             <element signature="method#AList#1;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#insert#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#append#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#remove#0;class#AList#0;class#Array#0" expanded="false" />
-            <element signature="method#moveToPos#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#AList#0;class#Array#0" expanded="false" />
             <element signature="class#Link#0;class#Array#0" expanded="false" />
@@ -1064,14 +1033,18 @@
             <element signature="method#getItem#0;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#find#0;class#LList#0;class#Array#0" expanded="false" />
             <element signature="method#update#0;class#LList#0;class#Array#0" expanded="false" />
-            <element signature="class#DLink#0;class#Array#0" expanded="false" />
             <element signature="method#DLink#0;class#DLink#0;class#Array#0" expanded="false" />
             <element signature="method#DLink#1;class#DLink#0;class#Array#0" expanded="false" />
-            <element signature="method#DLList#1;class#DLList#0;class#Array#0" expanded="false" />
-            <element signature="method#clear#0;class#DLList#0;class#Array#0" expanded="false" />
-            <element signature="method#append#0;class#DLList#0;class#Array#0" expanded="false" />
+            <element signature="e#6893#6894#0" expanded="true" />
+            <element signature="e#6938#6939#0" expanded="true" />
+            <element signature="e#7436#7437#0" expanded="true" />
+            <element signature="e#7466#7467#0" expanded="true" />
+            <element signature="e#7485#7486#0" expanded="true" />
+            <element signature="e#7553#7554#0" expanded="true" />
             <element signature="method#remove#0;class#DLList#0;class#Array#0" expanded="false" />
             <element signature="method#prev#0;class#DLList#0;class#Array#0" expanded="false" />
+            <element signature="e#8736#8737#0" expanded="true" />
+            <element signature="e#8770#8771#0" expanded="true" />
             <element signature="class#State#0;class#Array#0" expanded="false" />
             <element signature="method#State#0;class#State#0;class#Array#0" expanded="false" />
             <element signature="class#element#0;class#Array#0" expanded="false" />
@@ -1081,6 +1054,17 @@
             <element signature="method#Triplet#0;class#Triplet#0;class#Array#0" expanded="false" />
             <element signature="class#getnode#0;class#Array#0" expanded="false" />
             <element signature="method#getnode#0;class#getnode#0;class#Array#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9052#9061#0" expanded="true" />
           </folding>
         </state>
       </provider>

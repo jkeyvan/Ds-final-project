@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by kayvan on 1/20/2017.
@@ -65,29 +66,34 @@ public class run {
     }
 
     public static int next(Array.AList<Array.AList<Integer>> Mark,int v, int w) {
-            int i;
-            for (i=w+1; i<Mark.length(); i++)
+            int i=w+1;
+            while (i<Mark.length()){
 
                 Mark.moveToPos(v);
-                Array.AList A;
+                Array.AList<Integer> A;
                 A = Mark.getValue();
                 A.moveToPos(i);
-                int vi = (int) A.getValue();
-                if (vi != 0)
+                int vi = A.getValue();
+                if (vi != 0 )
                     return i;
+                i++;}
             return Mark.length(); // No next edge;
         }
 
     public  static int first(Array.AList<Array.AList<Integer>> Mark,int v) {
-        int i;
-        for (i=0; i<Mark.length(); i++)
+        int i=0;
+        while (i<Mark.length()){
 
             Mark.moveToPos(v);
-            Array.AList A;
+            Array.AList<Integer> A;
             A = Mark.getValue();
             A.moveToPos(i);
-            int vi= (int) A.getValue();
+            //if (A.getValue()==null) System.out.println("null"+" "+v+" "+i);
+            int vi= A.getValue();
+            //System.out.println(vi);
+
             if (vi != 0) return i;
+            i++;}
         return Mark.length();
     }
 
@@ -106,17 +112,22 @@ public class run {
 
 
         for (int i=0; i<G.length(); i++) { // Process the vertices
+            //System.out.println("this is ith vertex : "+i);
             int v = minVertex(G, D,visited);
+            //System.out.println("this is ith minvertex : "+v);
             visited[v]=1;
             //if (v != 0) AddEdgetoMST(V[v], v);
-            if (v != 0) {
-                System.out.println(V[v]);
-                System.out.println(v);
-                System.out.println(11111111);
+            if (v != 0 ) {
+//                System.out.println("these are our edges : ");
+//                System.out.println(V[v]);
+//                System.out.println(v);
+                //System.out.println(11111111);
             }
-            if (D[v] == Integer.MAX_VALUE) return; // Unreachable
+            //if (D[v] == Integer.MAX_VALUE) return; // Unreachable
             int w;
             for (w = first(G,v); w < G.length(); w = next(G,v, w)){
+
+                ///System.out.println("next first of : "+v +" is  "+w );
 
                 G.moveToPos(v);
                 Array.AList A;
@@ -124,12 +135,22 @@ public class run {
                 A.moveToPos(w);
                 int vw= (int) A.getValue();
 
-                if (D[w] > vw) {
+                if (D[w] > vw && vw>0 && D[w]!= vw && visited[w]==0) {
                     D[w] = vw;
                     V[w] = v;
+//                    System.out.println("D array : " + Arrays.toString(D));
+//                    System.out.println("V array : " + Arrays.toString(V));
+                    //System.out.println("these are our edges : " + V[w] +" "+w);
+
                 }
         }
+//            System.out.println("list of D : ");
+//            for(int y=0;y<D.length;y++) System.out.print(D[y]);
+//            System.out.println("list of V : ");
+//            for(int p=0;p<V.length;p++) System.out.print(V[p]);
         }
+
+        System.out.println(Arrays.toString(V));
     }
 
 
@@ -187,20 +208,20 @@ public class run {
         Array.State city6 = new Array.State(12.5, 4.5, null, injuriesofcity6);
 
 
-        Tocity1.insert(city1);
-        Tocity1.insert(city5);
-        Tocity2.insert(city1);
-        Tocity2.insert(city5);
-        Tocity2.insert(city3);
-        Tocity3.insert(city2);
-        Tocity3.insert(city4);
-        Tocity4.insert(city3);
-        Tocity4.insert(city5);
-        Tocity4.insert(city6);
-        Tocity5.insert(city1);
-        Tocity5.insert(city2);
-        Tocity5.insert(city4);
-        Tocity6.insert(city4);
+        Tocity1.append(city1);
+        Tocity1.append(city5);
+        Tocity2.append(city1);
+        Tocity2.append(city5);
+        Tocity2.append(city3);
+        Tocity3.append(city2);
+        Tocity3.append(city4);
+        Tocity4.append(city3);
+        Tocity4.append(city5);
+        Tocity4.append(city6);
+        Tocity5.append(city1);
+        Tocity5.append(city2);
+        Tocity5.append(city4);
+        Tocity6.append(city4);
 
 
         city1.path = Tocity1;
@@ -211,15 +232,15 @@ public class run {
         city6.path = Tocity6;
 
 
-        injuriesofcity1.insert(inj1);
-        injuriesofcity2.insert(inj2);
-        injuriesofcity3.insert(inj3);
-        injuriesofcity4.insert(inj4);
-        injuriesofcity5.insert(inj5);
-        injuriesofcity6.insert(inj6);
+        injuriesofcity1.append(inj1);
+        injuriesofcity2.append(inj2);
+        injuriesofcity3.append(inj3);
+        injuriesofcity4.append(inj4);
+        injuriesofcity5.append(inj5);
+        injuriesofcity6.append(inj6);
 
 
-        Array.DLList DLinkListofCities = new Array.DLList<Array.State>();
+        Array.DLList DLinkListofCities = new Array.DLList<Array.State>(6);
         DLinkListofCities.insert(city1);
         DLinkListofCities.insert(city2);
         DLinkListofCities.insert(city3);
@@ -235,55 +256,55 @@ public class run {
         Array.AList<Integer> row4 = new Array.AList<Integer>();
         Array.AList<Integer> row5 = new Array.AList<Integer>();
         Array.AList<Integer> row6 = new Array.AList<Integer>();
-        row1.insert(0);
-        row1.insert(1);
-        row1.insert(0);
-        row1.insert(0);
-        row1.insert(1);
-        row1.insert(0);
+        row1.append(0);
+        row1.append(5);
+        row1.append(0);
+        row1.append(3);
+        row1.append(16);
+        row1.append(12);
 
-        row2.insert(1);
-        row2.insert(0);
-        row2.insert(1);
-        row2.insert(0);
-        row2.insert(1);
-        row2.insert(0);
+        row2.append(5);
+        row2.append(0);
+        row2.append(0);
+        row2.append(0);
+        row2.append(0);
+        row2.append(10);
 
-        row3.insert(0);
-        row3.insert(1);
-        row3.insert(0);
-        row3.insert(1);
-        row3.insert(0);
-        row3.insert(0);
+        row3.append(0);
+        row3.append(0);
+        row3.append(0);
+        row3.append(1);
+        row3.append(4);
+        row3.append(0);
 
-        row4.insert(0);
-        row4.insert(0);
-        row4.insert(1);
-        row4.insert(0);
-        row4.insert(1);
-        row4.insert(1);
+        row4.append(3);
+        row4.append(0);
+        row4.append(1);
+        row4.append(0);
+        row4.append(0);
+        row4.append(0);
 
-        row5.insert(1);
-        row5.insert(1);
-        row5.insert(0);
-        row5.insert(1);
-        row5.insert(0);
-        row5.insert(0);
+        row5.append(16);
+        row5.append(0);
+        row5.append(4);
+        row5.append(0);
+        row5.append(0);
+        row5.append(0);
 
-        row6.insert(0);
-        row6.insert(0);
-        row6.insert(0);
-        row6.insert(1);
-        row6.insert(0);
-        row6.insert(0);
+        row6.append(12);
+        row6.append(10);
+        row6.append(0);
+        row6.append(0);
+        row6.append(0);
+        row6.append(0);
 
 
-        khodemun.insert(row1);
-        khodemun.insert(row2);
-        khodemun.insert(row3);
-        khodemun.insert(row4);
-        khodemun.insert(row5);
-        khodemun.insert(row6);
+        khodemun.append(row1);
+        khodemun.append(row2);
+        khodemun.append(row3);
+        khodemun.append(row4);
+        khodemun.append(row5);
+        khodemun.append(row6);
 
 
         int[] visited=new int[khodemun.length()];
